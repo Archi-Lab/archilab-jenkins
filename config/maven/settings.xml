@@ -5,8 +5,8 @@
   <servers>
     <server>
       <id>docker.nexus.archi-lab.io</id>
-      <username>${env.NEXUS_USERNAME}</username>
-      <password>${env.NEXUS_PASSWORD}</password>
+      <username>${env.NEXUS_CREDS_USR}</username>
+      <password>${env.NEXUS_CREDS_PSW}</password>
     </server>
   </servers>
 
