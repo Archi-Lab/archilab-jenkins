@@ -37,7 +37,7 @@ docker exec -it jenkins bash
 ## Hinweise für die Projekte
 Damit man mit maven über das Docker-Plugin das Docker Image zu unserem Docker-Repository pushen kann, benötigt man Credentials. Um den Aufwand für die Projekte die maven benutzen so gering wie möglich zu halten, muss die Umgebungsvariable `NEXUS_CREDS` in der Pipeline definiert und da über die Credentials für `nexus-archilab` zugewiesen werden. Diese können auf der Pipeline- oder auch dem Steps-Level definiert werden.
 
-``` json
+```javascript
 pipeline {
    agent { ... }
    environment {
