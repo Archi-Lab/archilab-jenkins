@@ -10,6 +10,15 @@ docker build -t archilab-jenkins .
 
 **Hinweis:** Wenn es Fehler beim Herunterladen/Installieren der Plugin gibt, dann ggf. in der plugins.txt die Zeilenunbrüche überprüfen. [1]
 
+#### Maven
+Damit nicht jedes Projekt immer alle maven-Dependencies erneut herunterladen und sich Gedanken um die Zugangsdaten zu unserer Docker-Registry machen muss, stellen wir ein eigenes Volumen zur Verfügung. Das wird dann von den jeweiligen Docker Agents verwendet...
+
+``` bash
+docker run --rm  -v ${PWD}/config/maven:/source -v maven-data:/root/.m2 -w /source alpine cp ./settings.xml /root/.m2
+```
+
+(vgl. https://github.com/moby/moby/issues/25245#issuecomment-367742567)
+
 
 ArchiLab-Jenkins starten
 ``` posh
