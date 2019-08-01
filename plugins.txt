@@ -11,3 +11,4 @@ keycloak:latest
 job-dsl:latest
 configuration-as-code-support:latest
 docker-workflow:latest
+pipeline-utility-steps:latest
