@@ -2,7 +2,7 @@
 Dieses Repository beinhaltet alles was für die Installation, Einrichtung und den Betrieb des Jenkin-Servers benötigt wird.
 
 
-ArchiLab-Image bauen
+## ArchiLab-Image bauen
 
 ``` posh
 docker build -t archilab-jenkins .
@@ -35,20 +35,18 @@ docker exec -it jenkins bash
 ```
 
 ## Hinweise für die Projekte
-Damit man mit maven über das Docker-Plugin das Docker Image zu unserem Docker-Repository pushen kann, benötigt man Credentials. Um den Aufwand für die Projekte die maven benutzen so gering wie möglich zu halten, muss die Umgebungsvariable `NEXUS_CREDS` in der Pipeline definiert und da über die Credentials für `nexus-archilab` zugewiesen werden. Diese können auf der Pipeline- oder auch dem Steps-Level definiert werden.
+Damit man mit maven über das Docker-Plugin das Docker Image zu unserem Docker-Repository pushen kann, benötigt man Credentials. Das kann man über `withCredentials()` in Umgebungsvariablen bekommen und diese dann ganz einfach im Skript benutzen.
 
+Scripted Pipeline
 ``` json
-pipeline {
-   agent { ... }
-   environment {
-      NEXUS_CREDS = credentials('nexus-archilab')
+node {
+   stage("..") {
+      withCredentials([usernamePassword(credentialsId: 'archilab-nexus-jenkins', usernameVariable: 'NEXUS_USERNAME', passwordVariable: 'NEXUS_PASSWORD')]) {
+         sh "mvn -B -s settings.xml -Ddockerfile.username=\"$NEXUS_USERNAME\" -Ddockerfile.password=\"$NEXUS_PASSWORD\" -Drevision=${revision} clean deploy"
+      }
    }
 }
 ```
-
-Das war es dann, damit werden die Credentials an der benötigten Stelle eingesetzt.
-
-**Hinweis:** Der Name der Variable ist entscheident, damit das Funktioniert. (siehe Name in der settings.xml) 
 
 ---
 ### Quellen
