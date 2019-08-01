@@ -3,17 +3,21 @@ jobs:
       pipelineJob('prox-project-service') {
         definition {
           cpsScm {
-              scriptPath 'Jenkinsfile'
+              scriptPath 'src/main/jenkins/Jenkinsfile'
               scm {
                   git {
                       remote {
-                          github('rudolfgrauberger/prox-project-service')
-                          credentials('github-archilab')
+                          github('Archi-Lab/prox-project-service')
+                          credentials('archilab-github-jenkins')
                       }
-                      branches('gp-ss2019')
+                      branches('jenkins-migration')
                   }
               }
+              lightweight(true)
           }
+        }
+        triggers {
+            githubPush()
         }
       }
 
@@ -21,17 +25,21 @@ jobs:
       pipelineJob('prox-module-service') {
         definition {
           cpsScm {
-              scriptPath 'Jenkinsfile'
+              scriptPath 'src/main/jenkins/Jenkinsfile'
               scm {
                   git {
                       remote {
-                          github('rudolfgrauberger/prox-module-service')
-                          credentials('github-archilab')
+                          github('Archi-Lab/prox-module-service')
+                          credentials('archilab-github-jenkins')
                       }
-                      branches('gp-ss2019')
+                      branches('jenkins-migration')
                   }
               }
+              lightweight(true)
           }
+        }
+        triggers {
+            githubPush()
         }
       }
 
@@ -39,17 +47,21 @@ jobs:
       pipelineJob('prox-web-client') {
         definition {
           cpsScm {
-              scriptPath 'Jenkinsfile'
+              scriptPath 'src/jenkins/Jenkinsfile'
               scm {
                   git {
                       remote {
-                          github('rudolfgrauberger/prox-web-client')
-                          credentials('github-archilab')
+                          github('Archi-Lab/prox-web-client')
+                          credentials('archilab-github-jenkins')
                       }
-                      branches('gp-ss2019')
+                      branches('jenkins-migration')
                   }
               }
+              lightweight(true)
           }
+        }
+        triggers {
+            githubPush()
         }
       }
 
@@ -57,17 +69,21 @@ jobs:
       pipelineJob('prox-service-discovery') {
         definition {
           cpsScm {
-              scriptPath 'Jenkinsfile'
+              scriptPath 'src/main/jenkins/Jenkinsfile'
               scm {
                   git {
                       remote {
-                          github('rudolfgrauberger/prox-service-discovery')
-                          credentials('github-archilab')
+                          github('Archi-Lab/prox-service-discovery')
+                          credentials('archilab-github-jenkins')
                       }
-                      branches('gp-ss2019')
+                      branches('jenkins-migration')
                   }
               }
+              lightweight(true)
           }
+        }
+        triggers {
+            githubPush()
         }
       }
 
@@ -75,16 +91,20 @@ jobs:
       pipelineJob('prox-api-gateway') {
         definition {
           cpsScm {
-              scriptPath 'Jenkinsfile'
+              scriptPath 'src/main/jenkins/Jenkinsfile'
               scm {
                   git {
                       remote {
-                          github('rudolfgrauberger/prox-api-gateway')
-                          credentials('github-archilab')
+                          github('Archi-Lab/prox-api-gateway')
+                          credentials('archilab-github-jenkins')
                       }
-                      branches('gp-ss2019')
+                      branches('jenkins-migration')
                   }
               }
+              lightweight(true)
           }
+        }
+        triggers {
+            githubPush()
         }
       }
