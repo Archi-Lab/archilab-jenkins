@@ -1,27 +1,58 @@
 # ArchiLab Jenkins-Infrastruktur
 Dieses Repository beinhaltet alles was für die Installation, Einrichtung und den Betrieb des Jenkin-Servers benötigt wird.
 
+## Docker secrets anlegen
+Als erstes müssen alle Secrets angelegt werden. Welche Secrets benötigt werden um den Jenkins für ArchiLab voll konfiguriert zu starten, findet man in der `docker-compose.yml`.
 
-## ArchiLab-Image bauen
+Ohne in den Docker Swarm-Modus zu wechseln, müssen die Secrets ein wenig anders angelegt werden. Deswegen unterscheiden sich die Anleitungen für die zwei Umgebungen ein wenig:
+- Anleitung für [Docker Swarm Umgebung](#docker-swarm)
+- Anleitung für [Docker Desktop Umgebung](#docker-desktop)
+
+### Docker Swarm
+Bei einzeiligen Secrets wie z. B. Benutzernamen und die meisten Passwörter bitte den nachfolgenden Befehl ausführen (das - am Ende ist wichtig!):
 
 ``` posh
-docker build -t archilab-jenkins .
+echo "mygithubpassword" | docker secrets create NAME -
 ```
 
-**Hinweis:** Wenn es Fehler beim Herunterladen/Installieren der Plugin gibt, dann ggf. in der plugins.txt die Zeilenunbrüche überprüfen. [1]
-
-## ArchiLab-Jenkins starten
+Beispiel:
 ``` posh
-docker run --name jenkins -u root -p 8080:8080 --env-file env.list -v /var/run/docker.sock:/var/run/docker.sock archilab-jenkins
+echo "mygithubusername" | docker secrets create GITHUB_USERNAME -
 ```
 
-Die `env.list` ist eine Datei, die die benötigten Umgebungsvariablen in der Form `VARNAME=wert` beinhaltet. Welche Umgebungsvariablen benötigt werden, ist in der [env.list](https://github.com/Archi-Lab/archilab-jenkins/blob/master/env.list) definiert.
+Bei mehrzeiligen Secrets wie z. B. der private RSA-Schlüssel oder ähnliches muss das über eine Datei gemacht werden:
 
-Der Parameter `-u root` gibt an, dass Docker die Befehle mit dem Benutzer `root` ausführen soll. Das ist notwendig, da wir sonst keine Berechtigung haben den Unix-Socket `/var/run/docker.sock` zu öffnen und darüber zu kommunizieren.
-
-Zugriff auf Container
 ``` posh
-docker exec -it jenkins bash
+docker secret create NAME <Pfad zur Datei>
+```
+
+Beispiel:
+``` posh
+docker secret create PROX_PROD_CERTS_SECRET ./private.key
+```
+
+Nachdem alle angelegt wurden, kann mit dem nachfolgenden Befehl der Jenkins-Server gestartet werden:
+
+``` posh
+docker-compose -f .\docker-compose.yml up
+```
+
+### Docker Desktop
+Da Docker Desktop - ohne in den Swarm Modus zu schalten - kein Docker secret unterstützt, gibt es die `docker-compose.local.yml`. In dieser Datei werden die Quellen der Secrets überschrieben und auf Dateinamen gelegt.
+
+Das heißt ganz konkret, dass alle Benutzernamen/Passwörter/RSA-Schlüssel etc. als Inhalt von einzelnen Dateien in dem Verzeichnis `secrets` abgelegt werden müssen. Dabei wurden die Secret-Namen direkt auch als Dateinamen benutzt.
+
+Welche Dateinamen es genau sind, findet man in der `docker-compose.local.yml`.
+
+Wenn die Dateien mit den jeweiligen Inhalten (Benutzernamen/Passwörter und privaten Schlüssel) angelegt sind, dann kann man Jenkins über den nachfolgenden Befehl einfach starten:
+
+``` posh
+docker-compose -f .\docker-compose.yml -f .\docker-compose.local.yml up
+```
+
+## Zugriff auf laufenden Container
+``` posh
+docker exec -it jenkins /bin/bash
 ```
 
 ## Hinweise für die Projekte
@@ -37,6 +68,8 @@ node {
    }
 }
 ```
+
+**Hinweis:** Wenn es Fehler beim Herunterladen/Installieren der Jenkins Plugin gibt, dann ggf. in der plugins.txt die Zeilenunbrüche überprüfen. [1]
 
 ---
 ### Quellen

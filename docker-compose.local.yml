@@ -1,0 +1,19 @@
+version: "3.7"
+
+secrets:
+  GITHUB_TOKEN:
+    file: ./secrets/GITHUB_TOKEN
+  GITHUB_USERNAME:
+    file: ./secrets/GITHUB_USERNAME
+  GITHUB_PASSWORD:
+    file: ./secrets/GITHUB_PASSWORD
+  NEXUS_USERNAME:
+    file: ./secrets/NEXUS_USERNAME
+  NEXUS_PASSWORD:
+    file: ./secrets/NEXUS_PASSWORD
+  PROX_PROD_CERTS_SECRET:
+    file: ./secrets/PROX_PROD_CERTS_SECRET
+  PROX_PROD_CERTS_CLIENT:
+    file: ./secrets/PROX_PROD_CERTS_CLIENT
+  PROX_PROD_CERTS_CA_SERVER:
+    file: ./secrets/PROX_PROD_CERTS_CA_SERVER
