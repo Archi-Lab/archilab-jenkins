@@ -1,2 +1,1 @@
-plugins.txt text eol=lf
-config/jenkins/scriptApproval.xml eol=lf
+* text=auto
