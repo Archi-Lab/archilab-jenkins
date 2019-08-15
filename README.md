@@ -1,65 +1,92 @@
 # ArchiLab Jenkins-Infrastruktur
-Dieses Repository beinhaltet alles was für die Installation, Einrichtung und den Betrieb des Jenkin-Servers benötigt wird.
+
+Dieses Repository beinhaltet alles was für die Installation, Einrichtung und den
+Betrieb des Jenkin-Servers benötigt wird.
 
 ## Docker secrets anlegen
-Als erstes müssen alle Secrets angelegt werden. Welche Secrets benötigt werden um den Jenkins für ArchiLab voll konfiguriert zu starten, findet man in der `docker-compose.yml`.
 
-Ohne in den Docker Swarm-Modus zu wechseln, müssen die Secrets ein wenig anders angelegt werden. Deswegen unterscheiden sich die Anleitungen für die zwei Umgebungen ein wenig:
+Als erstes müssen alle Secrets angelegt werden. Welche Secrets benötigt werden
+um den Jenkins für ArchiLab voll konfiguriert zu starten, findet man in der
+`docker-compose.yml`.
+
+Ohne in den Docker Swarm-Modus zu wechseln, müssen die Secrets ein wenig anders
+angelegt werden. Deswegen unterscheiden sich die Anleitungen für die zwei
+Umgebungen ein wenig:
+
 - Anleitung für [Docker Swarm Umgebung](#docker-swarm)
 - Anleitung für [Docker Desktop Umgebung](#docker-desktop)
 
 ### Docker Swarm
-Bei einzeiligen Secrets wie z. B. Benutzernamen und die meisten Passwörter bitte den nachfolgenden Befehl ausführen (das - am Ende ist wichtig!):
 
-``` posh
+Bei einzeiligen Secrets wie z. B. Benutzernamen und die meisten Passwörter bitte
+den nachfolgenden Befehl ausführen (das - am Ende ist wichtig!):
+
+```posh
 echo "mygithubpassword" | docker secrets create NAME -
 ```
 
 Beispiel:
-``` posh
+
+```posh
 echo "mygithubusername" | docker secrets create GITHUB_USERNAME -
 ```
 
-Bei mehrzeiligen Secrets wie z. B. der private RSA-Schlüssel oder ähnliches muss das über eine Datei gemacht werden:
+Bei mehrzeiligen Secrets wie z. B. der private RSA-Schlüssel oder ähnliches muss
+das über eine Datei gemacht werden:
 
-``` posh
+```posh
 docker secret create NAME <Pfad zur Datei>
 ```
 
 Beispiel:
-``` posh
+
+```posh
 docker secret create PROX_PROD_CERTS_SECRET ./private.key
 ```
 
-Nachdem alle angelegt wurden, kann mit dem nachfolgenden Befehl der Jenkins-Server gestartet werden:
+Nachdem alle angelegt wurden, kann mit dem nachfolgenden Befehl der
+Jenkins-Server gestartet werden:
 
-``` posh
+```posh
 docker-compose -f .\docker-compose.yml up
 ```
 
 ### Docker Desktop
-Da Docker Desktop - ohne in den Swarm Modus zu schalten - kein Docker secret unterstützt, gibt es die `docker-compose.local.yml`. In dieser Datei werden die Quellen der Secrets überschrieben und auf Dateinamen gelegt.
 
-Das heißt ganz konkret, dass alle Benutzernamen/Passwörter/RSA-Schlüssel etc. als Inhalt von einzelnen Dateien in dem Verzeichnis `secrets` abgelegt werden müssen. Dabei wurden die Secret-Namen direkt auch als Dateinamen benutzt.
+Da Docker Desktop - ohne in den Swarm Modus zu schalten - kein Docker secret
+unterstützt, gibt es die `docker-compose.local.yml`. In dieser Datei werden die
+Quellen der Secrets überschrieben und auf Dateinamen gelegt.
+
+Das heißt ganz konkret, dass alle Benutzernamen/Passwörter/RSA-Schlüssel etc.
+als Inhalt von einzelnen Dateien in dem Verzeichnis `secrets` abgelegt werden
+müssen. Dabei wurden die Secret-Namen direkt auch als Dateinamen benutzt.
 
 Welche Dateinamen es genau sind, findet man in der `docker-compose.local.yml`.
 
-Wenn die Dateien mit den jeweiligen Inhalten (Benutzernamen/Passwörter und privaten Schlüssel) angelegt sind, dann kann man Jenkins über den nachfolgenden Befehl einfach starten:
+Wenn die Dateien mit den jeweiligen Inhalten (Benutzernamen/Passwörter und
+privaten Schlüssel) angelegt sind, dann kann man Jenkins über den nachfolgenden
+Befehl einfach starten:
 
-``` posh
+```posh
 docker-compose -f .\docker-compose.yml -f .\docker-compose.local.yml up
 ```
 
 ## Zugriff auf laufenden Container
-``` posh
+
+```posh
 docker exec -it jenkins /bin/bash
 ```
 
 ## Hinweise für die Projekte
-Damit man mit maven über das Docker-Plugin das Docker Image zu unserem Docker-Repository pushen kann, benötigt man Credentials. Das kann man über `withCredentials()` in Umgebungsvariablen bekommen und diese dann ganz einfach im Skript benutzen.
+
+Damit man mit maven über das Docker-Plugin das Docker Image zu unserem
+Docker-Repository pushen kann, benötigt man Credentials. Das kann man über
+`withCredentials()` in Umgebungsvariablen bekommen und diese dann ganz einfach
+im Skript benutzen.
 
 Scripted Pipeline
-``` javascript
+
+```javascript
 node {
    stage("..") {
       withCredentials([usernamePassword(credentialsId: 'archilab-nexus-jenkins', usernameVariable: 'NEXUS_USERNAME', passwordVariable: 'NEXUS_PASSWORD')]) {
@@ -69,9 +96,11 @@ node {
 }
 ```
 
-**Hinweis:** Wenn es Fehler beim Herunterladen/Installieren der Jenkins Plugin gibt, dann ggf. in der plugins.txt die Zeilenunbrüche überprüfen. [1]
+**Hinweis:** Wenn es Fehler beim Herunterladen/Installieren der Jenkins Plugin
+gibt, dann ggf. in der plugins.txt die Zeilenunbrüche überprüfen. [1]
 
 ---
+
 ### Quellen
 
 [1] https://github.com/jenkinsci/docker/issues/516
