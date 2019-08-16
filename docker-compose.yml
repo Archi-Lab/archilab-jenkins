@@ -46,3 +46,6 @@ secrets:
     external: true
   PROX_DEV_CERTS_CA_SERVER:
     external: true
+
+volumes:
+  archilab-jenkins-data:
