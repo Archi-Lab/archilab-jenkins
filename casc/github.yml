@@ -1,7 +1,7 @@
 unclassified:
   githubpluginconfig:
     configs:
-      - name: "ArchiLab"
+      - name: "Official GitHub"
         apiUrl: "https://api.github.com"
         credentialsId: "archilab-github-jenkins-token"
         manageHooks: true
