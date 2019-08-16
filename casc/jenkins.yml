@@ -17,7 +17,7 @@ jenkins:
 unclassified:
   location:
 #    adminAddress: you@example.com
-    url: https://build.archi-lab.io/
+    url: https://build2.archi-lab.io/
 # Wait for https://github.com/jenkinsci/script-security-plugin/pull/250
 #  scriptApproval:
 #    approvedSignatures:
