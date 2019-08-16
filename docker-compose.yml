@@ -1,17 +1,14 @@
-version: "3.7"
+version: "3.6"
 services:
   jenkins:
-    build:
-      context: .
-      dockerfile: Dockerfile
     image: archilab-jenkins
-    container_name: jenkins
     env_file:
       - ./env.list
     ports:
       - "8080:8080"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - archilab-jenkins-data:/var/jenkins_home
     user: root
     secrets:
       - GITHUB_TOKEN
@@ -22,6 +19,9 @@ services:
       - PROX_PROD_CERTS_SECRET
       - PROX_PROD_CERTS_CLIENT
       - PROX_PROD_CERTS_CA_SERVER
+      - PROX_DEV_CERTS_SECRET
+      - PROX_DEV_CERTS_CLIENT
+      - PROX_DEV_CERTS_CA_SERVER
 
 secrets:
   GITHUB_TOKEN:
@@ -39,4 +39,10 @@ secrets:
   PROX_PROD_CERTS_CLIENT:
     external: true
   PROX_PROD_CERTS_CA_SERVER:
+    external: true
+  PROX_DEV_CERTS_SECRET:
+    external: true
+  PROX_DEV_CERTS_CLIENT:
+    external: true
+  PROX_DEV_CERTS_CA_SERVER:
     external: true
