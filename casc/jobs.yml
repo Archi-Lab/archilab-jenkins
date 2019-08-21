@@ -1,229 +1,248 @@
 jobs:
   - script: >
-      pipelineJob('prox-project-service-dev') {
-        definition {
-          cpsScm {
-              scriptPath 'src/main/jenkins/Jenkinsfile'
-              scm {
-                  git {
-                      remote {
-                          refspec('+refs/heads/dev:refs/remotes/origin/dev')
-                          github('Archi-Lab/prox-project-service')
-                          credentials('archilab-github-jenkins')
-                      }
-                      branches('dev')
-                  }
-              }
-              lightweight(true)
+      multibranchPipelineJob('prox-service-discovery') {
+        branchSources {
+          github {
+            scanCredentialsId('archilab-github-jenkins')
+            repoOwner('Archi-Lab')
+            repository('prox-service-discovery')
+          }
+        }
+        orphanedItemStrategy {
+          discardOldItems {
+            numToKeep(1)
           }
         }
         triggers {
-            githubPush()
+          periodic(5)
         }
       }
 
-  - script: >
-      pipelineJob('prox-module-service-dev') {
-        definition {
-          cpsScm {
-              scriptPath 'src/main/jenkins/Jenkinsfile'
-              scm {
-                  git {
-                      remote {
-                          refspec('+refs/heads/dev:refs/remotes/origin/dev')
-                          github('Archi-Lab/prox-module-service')
-                          credentials('archilab-github-jenkins')
-                      }
-                      branches('dev')
-                  }
-              }
-              lightweight(true)
-          }
-        }
-        triggers {
-            githubPush()
-        }
-      }
+#   - script: >
+#       pipelineJob('prox-project-service-dev') {
+#         definition {
+#           cpsScm {
+#               scriptPath 'src/main/jenkins/Jenkinsfile'
+#               scm {
+#                   git {
+#                       remote {
+#                           refspec('+refs/heads/dev:refs/remotes/origin/dev')
+#                           github('Archi-Lab/prox-project-service')
+#                           credentials('archilab-github-jenkins')
+#                       }
+#                       branches('dev')
+#                   }
+#               }
+#               lightweight(true)
+#           }
+#         }
+#         triggers {
+#             githubPush()
+#         }
+#       }
 
-  - script: >
-      pipelineJob('prox-web-client-dev') {
-        definition {
-          cpsScm {
-              scriptPath 'src/jenkins/Jenkinsfile'
-              scm {
-                  git {
-                      remote {
-                          refspec('+refs/heads/dev:refs/remotes/origin/dev')
-                          github('Archi-Lab/prox-web-client')
-                          credentials('archilab-github-jenkins')
-                      }
-                      branches('dev')
-                  }
-              }
-              lightweight(true)
-          }
-        }
-        triggers {
-            githubPush()
-        }
-      }
+#   - script: >
+#       pipelineJob('prox-module-service-dev') {
+#         definition {
+#           cpsScm {
+#               scriptPath 'src/main/jenkins/Jenkinsfile'
+#               scm {
+#                   git {
+#                       remote {
+#                           refspec('+refs/heads/dev:refs/remotes/origin/dev')
+#                           github('Archi-Lab/prox-module-service')
+#                           credentials('archilab-github-jenkins')
+#                       }
+#                       branches('dev')
+#                   }
+#               }
+#               lightweight(true)
+#           }
+#         }
+#         triggers {
+#             githubPush()
+#         }
+#       }
 
-  - script: >
-      pipelineJob('prox-service-discovery-dev') {
-        definition {
-          cpsScm {
-              scriptPath 'src/main/jenkins/Jenkinsfile'
-              scm {
-                  git {
-                      remote {
-                          refspec('+refs/heads/dev:refs/remotes/origin/dev')
-                          github('Archi-Lab/prox-service-discovery')
-                          credentials('archilab-github-jenkins')
-                      }
-                      branches('dev')
-                  }
-              }
-              lightweight(true)
-          }
-        }
-        triggers {
-            githubPush()
-        }
-      }
+#   - script: >
+#       pipelineJob('prox-web-client-dev') {
+#         definition {
+#           cpsScm {
+#               scriptPath 'src/jenkins/Jenkinsfile'
+#               scm {
+#                   git {
+#                       remote {
+#                           refspec('+refs/heads/dev:refs/remotes/origin/dev')
+#                           github('Archi-Lab/prox-web-client')
+#                           credentials('archilab-github-jenkins')
+#                       }
+#                       branches('dev')
+#                   }
+#               }
+#               lightweight(true)
+#           }
+#         }
+#         triggers {
+#             githubPush()
+#         }
+#       }
 
-  - script: >
-      pipelineJob('prox-api-gateway-dev') {
-        definition {
-          cpsScm {
-              scriptPath 'src/main/jenkins/Jenkinsfile'
-              scm {
-                  git {
-                      remote {
-                          refspec('+refs/heads/dev:refs/remotes/origin/dev')
-                          github('Archi-Lab/prox-api-gateway')
-                          credentials('archilab-github-jenkins')
-                      }
-                      branches('dev')
-                  }
-              }
-              lightweight(true)
-          }
-        }
-        triggers {
-            githubPush()
-        }
-      }
-  - script: >
-      pipelineJob('prox-project-service') {
-        definition {
-          cpsScm {
-              scriptPath 'src/main/jenkins/Jenkinsfile'
-              scm {
-                  git {
-                      remote {
-                          refspec('+refs/heads/master:refs/remotes/origin/master')
-                          github('Archi-Lab/prox-project-service')
-                          credentials('archilab-github-jenkins')
-                      }
-                      branches('master')
-                  }
-              }
-              lightweight(true)
-          }
-        }
-        triggers {
-            githubPush()
-        }
-      }
+#   - script: >
+#       pipelineJob('prox-service-discovery-dev') {
+#         definition {
+#           cpsScm {
+#               scriptPath 'src/main/jenkins/Jenkinsfile'
+#               scm {
+#                   git {
+#                       remote {
+#                           refspec('+refs/heads/dev:refs/remotes/origin/dev')
+#                           github('Archi-Lab/prox-service-discovery')
+#                           credentials('archilab-github-jenkins')
+#                       }
+#                       branches('dev')
+#                   }
+#               }
+#               lightweight(true)
+#           }
+#         }
+#         triggers {
+#             githubPush()
+#         }
+#       }
 
-  - script: >
-      pipelineJob('prox-module-service') {
-        definition {
-          cpsScm {
-              scriptPath 'src/main/jenkins/Jenkinsfile'
-              scm {
-                  git {
-                      remote {
-                          refspec('+refs/heads/master:refs/remotes/origin/master')
-                          github('Archi-Lab/prox-module-service')
-                          credentials('archilab-github-jenkins')
-                      }
-                      branches('master')
-                  }
-              }
-              lightweight(true)
-          }
-        }
-        triggers {
-            githubPush()
-        }
-      }
+#   - script: >
+#       pipelineJob('prox-api-gateway-dev') {
+#         definition {
+#           cpsScm {
+#               scriptPath 'src/main/jenkins/Jenkinsfile'
+#               scm {
+#                   git {
+#                       remote {
+#                           refspec('+refs/heads/dev:refs/remotes/origin/dev')
+#                           github('Archi-Lab/prox-api-gateway')
+#                           credentials('archilab-github-jenkins')
+#                       }
+#                       branches('dev')
+#                   }
+#               }
+#               lightweight(true)
+#           }
+#         }
+#         triggers {
+#             githubPush()
+#         }
+#       }
+#   - script: >
+#       pipelineJob('prox-project-service') {
+#         definition {
+#           cpsScm {
+#               scriptPath 'src/main/jenkins/Jenkinsfile'
+#               scm {
+#                   git {
+#                       remote {
+#                           refspec('+refs/heads/master:refs/remotes/origin/master')
+#                           github('Archi-Lab/prox-project-service')
+#                           credentials('archilab-github-jenkins')
+#                       }
+#                       branches('master')
+#                   }
+#               }
+#               lightweight(true)
+#           }
+#         }
+#         triggers {
+#             githubPush()
+#         }
+#       }
 
-  - script: >
-      pipelineJob('prox-web-client') {
-        definition {
-          cpsScm {
-              scriptPath 'src/jenkins/Jenkinsfile'
-              scm {
-                  git {
-                      remote {
-                          refspec('+refs/heads/master:refs/remotes/origin/master')
-                          github('Archi-Lab/prox-web-client')
-                          credentials('archilab-github-jenkins')
-                      }
-                      branches('master')
-                  }
-              }
-              lightweight(true)
-          }
-        }
-        triggers {
-            githubPush()
-        }
-      }
+#   - script: >
+#       pipelineJob('prox-module-service') {
+#         definition {
+#           cpsScm {
+#               scriptPath 'src/main/jenkins/Jenkinsfile'
+#               scm {
+#                   git {
+#                       remote {
+#                           refspec('+refs/heads/master:refs/remotes/origin/master')
+#                           github('Archi-Lab/prox-module-service')
+#                           credentials('archilab-github-jenkins')
+#                       }
+#                       branches('master')
+#                   }
+#               }
+#               lightweight(true)
+#           }
+#         }
+#         triggers {
+#             githubPush()
+#         }
+#       }
 
-  - script: >
-      pipelineJob('prox-service-discovery') {
-        definition {
-          cpsScm {
-              scriptPath 'src/main/jenkins/Jenkinsfile'
-              scm {
-                  git {
-                      remote {
-                          refspec('+refs/heads/master:refs/remotes/origin/master')
-                          github('Archi-Lab/prox-service-discovery')
-                          credentials('archilab-github-jenkins')
-                      }
-                      branches('master')
-                  }
-              }
-              lightweight(true)
-          }
-        }
-        triggers {
-            githubPush()
-        }
-      }
+#   - script: >
+#       pipelineJob('prox-web-client') {
+#         definition {
+#           cpsScm {
+#               scriptPath 'src/jenkins/Jenkinsfile'
+#               scm {
+#                   git {
+#                       remote {
+#                           refspec('+refs/heads/master:refs/remotes/origin/master')
+#                           github('Archi-Lab/prox-web-client')
+#                           credentials('archilab-github-jenkins')
+#                       }
+#                       branches('master')
+#                   }
+#               }
+#               lightweight(true)
+#           }
+#         }
+#         triggers {
+#             githubPush()
+#         }
+#       }
 
-  - script: >
-      pipelineJob('prox-api-gateway') {
-        definition {
-          cpsScm {
-              scriptPath 'src/main/jenkins/Jenkinsfile'
-              scm {
-                  git {
-                      remote {
-                          refspec('+refs/heads/master:refs/remotes/origin/master')
-                          github('Archi-Lab/prox-api-gateway')
-                          credentials('archilab-github-jenkins')
-                      }
-                      branches('master')
-                  }
-              }
-              lightweight(true)
-          }
-        }
-        triggers {
-            githubPush()
-        }
-      }
+#   - script: >
+#       pipelineJob('prox-service-discovery') {
+#         definition {
+#           cpsScm {
+#               scriptPath 'src/main/jenkins/Jenkinsfile'
+#               scm {
+#                   git {
+#                       remote {
+#                           refspec('+refs/heads/master:refs/remotes/origin/master')
+#                           github('Archi-Lab/prox-service-discovery')
+#                           credentials('archilab-github-jenkins')
+#                       }
+#                       branches('master')
+#                   }
+#               }
+#               lightweight(true)
+#           }
+#         }
+#         triggers {
+#             githubPush()
+#         }
+#       }
+
+#   - script: >
+#       pipelineJob('prox-api-gateway') {
+#         definition {
+#           cpsScm {
+#               scriptPath 'src/main/jenkins/Jenkinsfile'
+#               scm {
+#                   git {
+#                       remote {
+#                           refspec('+refs/heads/master:refs/remotes/origin/master')
+#                           github('Archi-Lab/prox-api-gateway')
+#                           credentials('archilab-github-jenkins')
+#                       }
+#                       branches('master')
+#                   }
+#               }
+#               lightweight(true)
+#           }
+#         }
+#         triggers {
+#             githubPush()
+#         }
+#       }
