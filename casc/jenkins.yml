@@ -1,6 +1,6 @@
 jenkins:
   systemMessage: "Jenkins configured automatically by Jenkins Configuration as Code plugin\n\n"
-  numExecutors: 10
+  numExecutors: 7
   scmCheckoutRetryCount: 0
   mode: NORMAL
 
