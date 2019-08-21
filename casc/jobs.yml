@@ -10,7 +10,7 @@ jobs:
                           github('Archi-Lab/prox-project-service')
                           credentials('archilab-github-jenkins')
                       }
-                      branches('dev')
+                      branches('*/dev')
                   }
               }
               lightweight(true)
@@ -32,7 +32,7 @@ jobs:
                           github('Archi-Lab/prox-module-service')
                           credentials('archilab-github-jenkins')
                       }
-                      branches('dev')
+                      branches('*/dev')
                   }
               }
               lightweight(true)
@@ -54,7 +54,7 @@ jobs:
                           github('Archi-Lab/prox-web-client')
                           credentials('archilab-github-jenkins')
                       }
-                      branches('dev')
+                      branches('*/dev')
                   }
               }
               lightweight(true)
@@ -76,7 +76,7 @@ jobs:
                           github('Archi-Lab/prox-service-discovery')
                           credentials('archilab-github-jenkins')
                       }
-                      branches('dev')
+                      branches('*/dev')
                   }
               }
               lightweight(true)
@@ -98,7 +98,7 @@ jobs:
                           github('Archi-Lab/prox-api-gateway')
                           credentials('archilab-github-jenkins')
                       }
-                      branches('dev')
+                      branches('*/dev')
                   }
               }
               lightweight(true)
@@ -119,7 +119,7 @@ jobs:
                           github('Archi-Lab/prox-project-service')
                           credentials('archilab-github-jenkins')
                       }
-                      branches('master')
+                      branches('*/master')
                   }
               }
               lightweight(true)
@@ -141,7 +141,7 @@ jobs:
                           github('Archi-Lab/prox-module-service')
                           credentials('archilab-github-jenkins')
                       }
-                      branches('master')
+                      branches('*/master')
                   }
               }
               lightweight(true)
@@ -163,7 +163,7 @@ jobs:
                           github('Archi-Lab/prox-web-client')
                           credentials('archilab-github-jenkins')
                       }
-                      branches('master')
+                      branches('*/master')
                   }
               }
               lightweight(true)
@@ -185,7 +185,7 @@ jobs:
                           github('Archi-Lab/prox-service-discovery')
                           credentials('archilab-github-jenkins')
                       }
-                      branches('master')
+                      branches('*/master')
                   }
               }
               lightweight(true)
@@ -207,7 +207,7 @@ jobs:
                           github('Archi-Lab/prox-api-gateway')
                           credentials('archilab-github-jenkins')
                       }
-                      branches('master')
+                      branches('*/master')
                   }
               }
               lightweight(true)
