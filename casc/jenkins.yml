@@ -1,24 +1,66 @@
 jenkins:
-  systemMessage: "Jenkins configured automatically by Jenkins Configuration as Code plugin\n\n"
-  numExecutors: 7
-  scmCheckoutRetryCount: 0
-  mode: NORMAL
-
+  agentProtocols:
+  - "JNLP4-connect"
+  - "Ping"
   authorizationStrategy:
     loggedInUsersCanDoAnything:
       allowAnonymousRead: true
-
-#  globalNodeProperties:
-#  - envVars:
-#      env:
-#        - key: FOO
-#          value: BAR
-
+  crumbIssuer:
+    standard:
+      excludeClientIPFromCrumb: true
+  disableRememberMe: false
+  markupFormatter: "plainText"
+  mode: NORMAL
+  myViewsTabBar: "standard"
+  numExecutors: 7
+  primaryView:
+    all:
+      name: "all"
+  projectNamingStrategy: "standard"
+  quietPeriod: 5
+  remotingSecurity:
+    enabled: true
+  scmCheckoutRetryCount: 0
+  slaveAgentPort: 50000
+  systemMessage: "Jenkins configured automatically by Jenkins Configuration as Code\
+    \ plugin\r\n\r\n"
+  updateCenter:
+    sites:
+    - id: "default"
+      url: "https://updates.jenkins.io/update-center.json"
+  views:
+  - all:
+      name: "all"
+  viewsTabBar: "standard"
+security:
+  apiToken:
+    creationOfLegacyTokenEnabled: false
+    tokenGenerationOnCreationEnabled: false
+    usageStatisticsEnabled: true
+  downloadSettings:
+    useBrowser: false
+  globalJobDslSecurityConfiguration:
+    useScriptSecurity: true
+  sSHD:
+    port: -1
 unclassified:
+  gitSCM:
+    createAccountBasedOnEmail: false
   location:
-#    adminAddress: you@example.com
-    url: https://build2.archi-lab.io/
-# Wait for https://github.com/jenkinsci/script-security-plugin/pull/250
-#  scriptApproval:
-#    approvedSignatures:
-#      - method java.util.Properties getProperty java.lang.String
+    adminAddress: "julian.lengelsen@th-koeln.de"
+    url: "https://build2.archi-lab.io/"
+  mailer:
+    adminAddress: "julian.lengelsen@th-koeln.de"
+    charset: "UTF-8"
+    useSsl: false
+  pollSCM:
+    pollingThreadCount: 10
+  timestamperConfig:
+    allPipelines: false
+    elapsedTimeFormat: "'<b>'HH:mm:ss.S'</b> '"
+    systemTimeFormat: "'<b>'HH:mm:ss'</b> '"
+tool:
+  git:
+    installations:
+    - home: "git"
+      name: "Default"

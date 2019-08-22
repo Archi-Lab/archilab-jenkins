@@ -12,3 +12,5 @@ unclassified:
         "public-client": true,
         "confidential-port": 0        
       }
+    keycloakRespectAccessTokenTimeout: true
+    keycloakValidate: false
