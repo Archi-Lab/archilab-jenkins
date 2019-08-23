@@ -11,9 +11,9 @@ docker secret rm PROX_PROD_CERTS_CA_SERVER
 docker secret rm PROX_DEV_CERTS_SECRET
 docker secret rm PROX_DEV_CERTS_CLIENT
 docker secret rm PROX_DEV_CERTS_CA_SERVER
-docker secret rm PROX_GP_WS19_CERTS_SECRET
-docker secret rm PROX_GP_WS19_CERTS_CLIENT
-docker secret rm PROX_GP_WS19_CERTS_CA_SERVER
+docker secret rm PROX_GP_WS2019_CERTS_SECRET
+docker secret rm PROX_GP_WS2019_CERTS_CLIENT
+docker secret rm PROX_GP_WS2019_CERTS_CA_SERVER
 docker secret rm COALBASE_PROD_CERTS_SECRET
 docker secret rm COALBASE_PROD_CERTS_CLIENT
 docker secret rm COALBASE_PROD_CERTS_CA_SERVER
