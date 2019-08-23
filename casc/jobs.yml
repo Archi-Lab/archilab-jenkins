@@ -217,3 +217,201 @@ jobs:
             githubPush()
         }
       }
+
+  - script: >
+      pipelineJob('coalbase-api-gateway') {
+        definition {
+          cpsScm {
+              scriptPath 'src/main/jenkins/Jenkinsfile'
+              scm {
+                  git {
+                      remote {
+                          github('Archi-Lab/coalbase-api-gateway')
+                          credentials('archilab-github-jenkins')
+                      }
+                      branches('jenkins-migration')
+                  }
+              }
+              lightweight(true)
+          }
+        }
+        triggers {
+            githubPush()
+        }
+      }
+
+  - script: >
+      pipelineJob('coalbase-comment') {
+        definition {
+          cpsScm {
+              scriptPath 'src/main/jenkins/Jenkinsfile'
+              scm {
+                  git {
+                      remote {
+                          github('Archi-Lab/coalbase-comment')
+                          credentials('archilab-github-jenkins')
+                      }
+                      branches('jenkins-migration')
+                  }
+              }
+              lightweight(true)
+          }
+        }
+        triggers {
+            githubPush()
+        }
+      }
+
+  - script: >
+      pipelineJob('coalbase-frontend') {
+        definition {
+          cpsScm {
+              scriptPath 'src/main/jenkins/Jenkinsfile'
+              scm {
+                  git {
+                      remote {
+                          github('Archi-Lab/coalbase-frontend')
+                          credentials('archilab-github-jenkins')
+                      }
+                      branches('jenkins-migration')
+                  }
+              }
+              lightweight(true)
+          }
+        }
+        triggers {
+            githubPush()
+        }
+      }
+
+  - script: >
+      pipelineJob('coalbase-infrastructure') {
+        definition {
+          cpsScm {
+              scriptPath 'src/main/jenkins/Jenkinsfile'
+              scm {
+                  git {
+                      remote {
+                          github('Archi-Lab/coalbase-infrastructure')
+                          credentials('archilab-github-jenkins')
+                      }
+                      branches('jenkins-migration')
+                  }
+              }
+              lightweight(true)
+          }
+        }
+        triggers {
+            githubPush()
+        }
+      }
+
+  - script: >
+      pipelineJob('coalbase-keycloak') {
+        definition {
+          cpsScm {
+              scriptPath 'src/main/jenkins/Jenkinsfile'
+              scm {
+                  git {
+                      remote {
+                          github('Archi-Lab/coalbase-keycloak')
+                          credentials('archilab-github-jenkins')
+                      }
+                      branches('jenkins-migration')
+                  }
+              }
+              lightweight(true)
+          }
+        }
+        triggers {
+            githubPush()
+        }
+      }
+
+  - script: >
+      pipelineJob('coalbase-learning-outcome') {
+        definition {
+          cpsScm {
+              scriptPath 'src/main/jenkins/Jenkinsfile'
+              scm {
+                  git {
+                      remote {
+                          github('Archi-Lab/coalbase-learning-outcome')
+                          credentials('archilab-github-jenkins')
+                      }
+                      branches('jenkins-migration')
+                  }
+              }
+              lightweight(true)
+          }
+        }
+        triggers {
+            githubPush()
+        }
+      }
+
+  - script: >
+      pipelineJob('coalbase-message-broker') {
+        definition {
+          cpsScm {
+              scriptPath 'src/main/jenkins/Jenkinsfile'
+              scm {
+                  git {
+                      remote {
+                          github('Archi-Lab/coalbase-message-broker')
+                          credentials('archilab-github-jenkins')
+                      }
+                      branches('jenkins-migration')
+                  }
+              }
+              lightweight(true)
+          }
+        }
+        triggers {
+            githubPush()
+        }
+      }
+
+  - script: >
+      pipelineJob('coalbase-resource') {
+        definition {
+          cpsScm {
+              scriptPath 'src/main/jenkins/Jenkinsfile'
+              scm {
+                  git {
+                      remote {
+                          github('Archi-Lab/coalbase-resource')
+                          credentials('archilab-github-jenkins')
+                      }
+                      branches('jenkins-migration')
+                  }
+              }
+              lightweight(true)
+          }
+        }
+        triggers {
+            githubPush()
+        }
+      }
+
+  - script: >
+      pipelineJob('coalbase-service-discovery') {
+        definition {
+          cpsScm {
+              scriptPath 'src/main/jenkins/Jenkinsfile'
+              scm {
+                  git {
+                      remote {
+                          github('Archi-Lab/coalbase-service-discovery')
+                          credentials('archilab-github-jenkins')
+                      }
+                      branches('jenkins-migration')
+                  }
+              }
+              lightweight(true)
+          }
+        }
+        triggers {
+            githubPush()
+        }
+      }
