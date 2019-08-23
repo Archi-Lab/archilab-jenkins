@@ -266,7 +266,7 @@ jobs:
       pipelineJob('coalbase-frontend') {
         definition {
           cpsScm {
-              scriptPath 'src/main/jenkins/Jenkinsfile'
+              scriptPath 'src/jenkins/Jenkinsfile'
               scm {
                   git {
                       remote {
@@ -288,7 +288,7 @@ jobs:
       pipelineJob('coalbase-infrastructure') {
         definition {
           cpsScm {
-              scriptPath 'src/main/jenkins/Jenkinsfile'
+              scriptPath 'Jenkinsfile'
               scm {
                   git {
                       remote {
@@ -310,7 +310,7 @@ jobs:
       pipelineJob('coalbase-keycloak') {
         definition {
           cpsScm {
-              scriptPath 'src/main/jenkins/Jenkinsfile'
+              scriptPath 'Jenkinsfile'
               scm {
                   git {
                       remote {
@@ -354,7 +354,7 @@ jobs:
       pipelineJob('coalbase-message-broker') {
         definition {
           cpsScm {
-              scriptPath 'src/main/jenkins/Jenkinsfile'
+              scriptPath 'Jenkinsfile'
               scm {
                   git {
                       remote {
