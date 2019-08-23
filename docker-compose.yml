@@ -22,6 +22,12 @@ services:
       - PROX_DEV_CERTS_SECRET
       - PROX_DEV_CERTS_CLIENT
       - PROX_DEV_CERTS_CA_SERVER
+      - COALBASE_PROD_CERTS_SECRET
+      - COALBASE_PROD_CERTS_CLIENT
+      - COALBASE_PROD_CERTS_CA_SERVER
+      - COALBASE_DEV_CERTS_SECRET
+      - COALBASE_DEV_CERTS_CLIENT
+      - COALBASE_DEV_CERTS_CA_SERVER
 
 secrets:
   GITHUB_TOKEN:
@@ -45,6 +51,18 @@ secrets:
   PROX_DEV_CERTS_CLIENT:
     external: true
   PROX_DEV_CERTS_CA_SERVER:
+    external: true
+  COALBASE_PROD_CERTS_SECRET:
+    external: true
+  COALBASE_PROD_CERTS_CLIENT:
+    external: true
+  COALBASE_PROD_CERTS_CA_SERVER:
+    external: true
+  COALBASE_DEV_CERTS_SECRET:
+    external: true
+  COALBASE_DEV_CERTS_CLIENT:
+    external: true
+  COALBASE_DEV_CERTS_CA_SERVER:
     external: true
 
 volumes:
