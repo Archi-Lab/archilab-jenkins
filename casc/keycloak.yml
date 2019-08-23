@@ -5,12 +5,12 @@ unclassified:
   keycloakSecurityRealm:
     keycloakJson: |-
       {
-        "realm": "archilab",
+        "realm": "jenkins",
         "auth-server-url": "https://login.archi-lab.io/auth",
         "ssl-required": "external",
         "resource": "jenkins",
         "public-client": true,
-        "confidential-port": 0        
+        "confidential-port": 0
       }
     keycloakRespectAccessTokenTimeout: true
     keycloakValidate: false
