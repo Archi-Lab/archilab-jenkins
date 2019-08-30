@@ -395,50 +395,6 @@ jobs:
       }
 
   - script: >
-      pipelineJob('coalbase-infrastructure') {
-        definition {
-          cpsScm {
-              scriptPath 'Jenkinsfile'
-              scm {
-                  git {
-                      remote {
-                          github('Archi-Lab/coalbase-infrastructure')
-                          credentials('archilab-github-jenkins')
-                      }
-                      branches('jenkins-migration')
-                  }
-              }
-              lightweight(true)
-          }
-        }
-        triggers {
-            githubPush()
-        }
-      }
-
-  - script: >
-      pipelineJob('coalbase-keycloak') {
-        definition {
-          cpsScm {
-              scriptPath 'Jenkinsfile'
-              scm {
-                  git {
-                      remote {
-                          github('Archi-Lab/coalbase-keycloak')
-                          credentials('archilab-github-jenkins')
-                      }
-                      branches('jenkins-migration')
-                  }
-              }
-              lightweight(true)
-          }
-        }
-        triggers {
-            githubPush()
-        }
-      }
-
-  - script: >
       pipelineJob('coalbase-learning-outcome') {
         definition {
           cpsScm {
