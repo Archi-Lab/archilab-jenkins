@@ -13,3 +13,4 @@ pipeline-utility-steps:latest
 timestamper:latest
 workflow-aggregator:latest
 sonar:latest
+jacoco:latest
