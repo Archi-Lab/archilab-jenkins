@@ -12,3 +12,4 @@ pipeline-stage-view:latest
 pipeline-utility-steps:latest
 timestamper:latest
 workflow-aggregator:latest
+sonar:latest

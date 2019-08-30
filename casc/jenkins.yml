@@ -55,6 +55,15 @@ unclassified:
     useSsl: false
   pollSCM:
     pollingThreadCount: 10
+  sonarGlobalConfiguration:
+    buildWrapperEnabled: false
+    installations:
+    - credentialsId: "archilab-sonarqube-jenkins-token"
+      name: "SonarQube-Server"
+      serverUrl: "https://sonar.archi-lab.io"
+      triggers:
+        skipScmCause: false
+        skipUpstreamCause: false
   timestamperConfig:
     allPipelines: false
     elapsedTimeFormat: "'<b>'HH:mm:ss.S'</b> '"
@@ -64,3 +73,11 @@ tool:
     installations:
     - home: "git"
       name: "Default"
+  sonarRunnerInstallation:
+    installations:
+    - name: "SonarQube Scanner"
+      properties:
+      - installSource:
+          installers:
+          - sonarRunnerInstaller:
+              id: "4.0.0.1744"
