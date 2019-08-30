@@ -47,10 +47,8 @@ unclassified:
   gitSCM:
     createAccountBasedOnEmail: false
   location:
-    adminAddress: "julian.lengelsen@th-koeln.de"
     url: "https://build2.archi-lab.io/"
   mailer:
-    adminAddress: "julian.lengelsen@th-koeln.de"
     charset: "UTF-8"
     useSsl: false
   pollSCM:
