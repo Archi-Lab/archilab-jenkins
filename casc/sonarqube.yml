@@ -5,6 +5,7 @@ unclassified:
     - credentialsId: "archilab-sonarqube-jenkins-token"
       name: "SonarQube-Server"
       serverUrl: "https://sonar.archi-lab.io"
+      serverAuthenticationToken: ""
       triggers:
         skipScmCause: false
         skipUpstreamCause: false
