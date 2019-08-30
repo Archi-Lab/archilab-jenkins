@@ -376,7 +376,7 @@ jobs:
       pipelineJob('coalbase-frontend') {
         definition {
           cpsScm {
-              scriptPath 'src/jenkins/Jenkinsfile'
+              scriptPath 'Jenkinsfile'
               scm {
                   git {
                       remote {
