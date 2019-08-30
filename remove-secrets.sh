@@ -20,3 +20,4 @@ docker secret rm COALBASE_PROD_CERTS_CA_SERVER
 docker secret rm COALBASE_DEV_CERTS_SECRET
 docker secret rm COALBASE_DEV_CERTS_CLIENT
 docker secret rm COALBASE_DEV_CERTS_CA_SERVER
+docker secret rm SONARQUBE_TOKEN
