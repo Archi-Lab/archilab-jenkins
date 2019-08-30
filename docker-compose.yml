@@ -31,6 +31,7 @@ services:
       - COALBASE_DEV_CERTS_SECRET
       - COALBASE_DEV_CERTS_CLIENT
       - COALBASE_DEV_CERTS_CA_SERVER
+      - SONARQUBE_TOKEN
 
 secrets:
   GITHUB_TOKEN:
@@ -72,6 +73,8 @@ secrets:
   COALBASE_DEV_CERTS_CLIENT:
     external: true
   COALBASE_DEV_CERTS_CA_SERVER:
+    external: true
+  SONARQUBE_TOKEN:
     external: true
 
 volumes:
