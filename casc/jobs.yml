@@ -339,7 +339,7 @@ jobs:
                           github('Archi-Lab/coalbase-api-gateway')
                           credentials('archilab-github-jenkins')
                       }
-                      branches('jenkins-migration')
+                      branches('master')
                   }
               }
               lightweight(true)
@@ -361,7 +361,7 @@ jobs:
                           github('Archi-Lab/coalbase-comment')
                           credentials('archilab-github-jenkins')
                       }
-                      branches('jenkins-migration')
+                      branches('master')
                   }
               }
               lightweight(true)
@@ -383,7 +383,7 @@ jobs:
                           github('Archi-Lab/coalbase-frontend')
                           credentials('archilab-github-jenkins')
                       }
-                      branches('jenkins-migration')
+                      branches('master')
                   }
               }
               lightweight(true)
@@ -405,7 +405,7 @@ jobs:
                           github('Archi-Lab/coalbase-learning-outcome')
                           credentials('archilab-github-jenkins')
                       }
-                      branches('jenkins-migration')
+                      branches('master')
                   }
               }
               lightweight(true)
@@ -427,7 +427,7 @@ jobs:
                           github('Archi-Lab/coalbase-message-broker')
                           credentials('archilab-github-jenkins')
                       }
-                      branches('jenkins-migration')
+                      branches('master')
                   }
               }
               lightweight(true)
@@ -449,7 +449,7 @@ jobs:
                           github('Archi-Lab/coalbase-resource')
                           credentials('archilab-github-jenkins')
                       }
-                      branches('jenkins-migration')
+                      branches('master')
                   }
               }
               lightweight(true)
@@ -471,7 +471,7 @@ jobs:
                           github('Archi-Lab/coalbase-service-discovery')
                           credentials('archilab-github-jenkins')
                       }
-                      branches('jenkins-migration')
+                      branches('master')
                   }
               }
               lightweight(true)
