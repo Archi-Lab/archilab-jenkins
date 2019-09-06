@@ -108,6 +108,7 @@ jobs:
             githubPush()
         }
       }
+
   - script: >
       pipelineJob('prox-project-service-dev') {
         definition {
