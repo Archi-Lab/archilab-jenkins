@@ -8,7 +8,6 @@ services:
       - "8080:8080"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - archilab-jenkins-data:/var/jenkins_home
     user: root
     secrets:
       - GITHUB_TOKEN
@@ -85,6 +84,3 @@ secrets:
     external: true
   SONARQUBE_TOKEN:
     external: true
-
-volumes:
-  archilab-jenkins-data:
