@@ -33,6 +33,9 @@ services:
       - COALBASE_DEV_CERTS_SECRET
       - COALBASE_DEV_CERTS_CLIENT
       - COALBASE_DEV_CERTS_CA_SERVER
+      - FAE_WS2019_CERTS_SECRET
+      - FAE_WS2019_CERTS_CLIENT
+      - FAE_WS2019_CERTS_CA_SERVER
       - SONARQUBE_TOKEN
 
 secrets:
@@ -81,6 +84,12 @@ secrets:
   COALBASE_DEV_CERTS_CLIENT:
     external: true
   COALBASE_DEV_CERTS_CA_SERVER:
+    external: true
+  FAE_WS2019_CERTS_SECRET:
+    external: true
+  FAE_WS2019_CERTS_CLIENT:
+    external: true
+  FAE_WS2019_CERTS_CA_SERVER:
     external: true
   SONARQUBE_TOKEN:
     external: true
