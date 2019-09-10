@@ -18,37 +18,21 @@ Umgebungen ein wenig:
 
 ### Docker Swarm
 
-Bei einzeiligen Secrets wie z. B. Benutzernamen und die meisten Passwörter bitte
-den nachfolgenden Befehl ausführen (das - am Ende ist wichtig!):
+Um die benötigten Docker Secrets anzulegen existiert ein Skript, dass die Secrets
+aus Textdateien im Ordner `secrets` generiert. Dieser Ordner darf aus
+Sicherheitsgründen natürlich nicht in das öffentliche Repository gepusht werden
+und muss deshalb von Hand angelegt werden mit allen Secrets angelegt werden.
+Danach können die Secrets mithilfe des Skripts angelegt werden:
 
-```posh
-echo "mygithubpassword" | docker secrets create NAME -
+```bash
+./create-secrets.sh
 ```
 
-Beispiel:
+Danach kann mit mithilfe des Run-Skripts das Docker-Image für den Jenkins-Server
+gebaut und gestartet werden:
 
-```posh
-echo "mygithubusername" | docker secrets create GITHUB_USERNAME -
-```
-
-Bei mehrzeiligen Secrets wie z. B. der private RSA-Schlüssel oder ähnliches muss
-das über eine Datei gemacht werden:
-
-```posh
-docker secret create NAME <Pfad zur Datei>
-```
-
-Beispiel:
-
-```posh
-docker secret create PROX_PROD_CERTS_SECRET ./private.key
-```
-
-Nachdem alle angelegt wurden, kann mit dem nachfolgenden Befehl der
-Jenkins-Server gestartet werden:
-
-```posh
-docker-compose -f .\docker-compose.yml up
+```bash
+./run.sh
 ```
 
 ### Docker Desktop
@@ -67,21 +51,21 @@ Wenn die Dateien mit den jeweiligen Inhalten (Benutzernamen/Passwörter und
 privaten Schlüssel) angelegt sind, dann kann man Jenkins über den nachfolgenden
 Befehl einfach starten:
 
-```posh
-docker-compose -f .\docker-compose.yml -f .\docker-compose.local.yml up
+```bash
+docker-compose -f docker-compose.yml -f docker-compose.local.yml up
 ```
 
 ## Zugriff auf laufenden Container
 
-```posh
-docker exec -it jenkins /bin/bash
+```bash
+docker exec -it jenkins bash
 ```
 
 ## Hinweise für die Projekte
 
-Damit man mit maven über das Docker-Plugin das Docker Image zu unserem
-Docker-Repository pushen kann, benötigt man Credentials. Das kann man über
-`withCredentials()` in Umgebungsvariablen bekommen und diese dann ganz einfach
+Damit man mit Maven über das Docker-Plugin das Docker-Image zu unserem
+Docker-Repository pushen kann, benötigt man Credentials. Diese kann man über
+`withCredentials()` als Umgebungsvariablen bekommen und diese dann ganz einfach
 im Skript benutzen.
 
 Scripted Pipeline
@@ -96,8 +80,8 @@ node {
 }
 ```
 
-**Hinweis:** Wenn es Fehler beim Herunterladen/Installieren der Jenkins Plugin
-gibt, dann ggf. in der plugins.txt die Zeilenunbrüche überprüfen. [1]
+**Hinweis:** Wenn es Fehler beim Herunterladen/Installieren der Jenkins-Plugins
+gibt, dann ggf. in der plugins.txt die Zeilenumbrüche überprüfen. [1]
 
 ---
 
