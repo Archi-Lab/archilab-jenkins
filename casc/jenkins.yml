@@ -47,7 +47,7 @@ unclassified:
   gitSCM:
     createAccountBasedOnEmail: false
   location:
-    url: "https://build2.archi-lab.io/"
+    url: "https://build.archi-lab.io/"
   mailer:
     charset: "UTF-8"
     useSsl: false
