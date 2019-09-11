@@ -55,6 +55,10 @@ Befehl einfach starten:
 docker-compose -f docker-compose.yml -f docker-compose.local.yml up
 ```
 
+## Neue Pipeline anlegen
+- In dem Ordner /casc-Ordner die neue Pipeline in die Datei jobs.yml hinzufügen (am besten indem ein bestehender "- script >"-Skript kopiert wird)
+- Anschließend das Skript `./run.sh` auf dem archilab-build ausführen
+
 ## Zugriff auf laufenden Container
 
 ```bash
