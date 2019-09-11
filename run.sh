@@ -6,11 +6,11 @@ docker build --pull -t $COMPOSE_PROJECT_NAME .
 
 docker stack rm $COMPOSE_PROJECT_NAME
 
-until [ -z "$(docker service ls --filter label=com.docker.stack.namespace=$COMPOSE_PROJECT_NAME -q)" ] || [ $LIMIT -lt 0 ]; do
+until [ -z "$(docker service ls --filter label=com.docker.stack.namespace=$COMPOSE_PROJECT_NAME -q)" ] || [ "$LIMIT" -lt 0 ]; do
   sleep 1;
 done
 
-until [ -z "$(docker network ls --filter label=com.docker.stack.namespace=$COMPOSE_PROJECT_NAME -q)" ] || [ $LIMIT -lt 0 ]; do
+until [ -z "$(docker network ls --filter label=com.docker.stack.namespace=$COMPOSE_PROJECT_NAME -q)" ] || [ "$LIMIT" -lt 0 ]; do
   sleep 1;
 done
 
