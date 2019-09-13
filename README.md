@@ -3,7 +3,7 @@
 Dieses Repository beinhaltet alles was für die Installation, Einrichtung und den
 Betrieb des Jenkin-Servers benötigt wird.
 
-## Docker secrets anlegen
+## Docker Secrets anlegen
 
 Als erstes müssen alle Secrets angelegt werden. Welche Secrets benötigt werden
 um den Jenkins für ArchiLab voll konfiguriert zu starten, findet man in der
@@ -18,8 +18,8 @@ Umgebungen ein wenig:
 
 ### Docker Swarm
 
-Um die benötigten Docker Secrets anzulegen existiert ein Skript, dass die Secrets
-aus Textdateien im Ordner `secrets` generiert. Dieser Ordner darf aus
+Um die benötigten Docker Secrets anzulegen existiert ein Skript, dass die
+Secrets aus Textdateien im Ordner `secrets` generiert. Dieser Ordner darf aus
 Sicherheitsgründen natürlich nicht in das öffentliche Repository gepusht werden
 und muss deshalb von Hand angelegt werden mit allen Secrets angelegt werden.
 Danach können die Secrets mithilfe des Skripts angelegt werden:
@@ -55,8 +55,10 @@ Befehl einfach starten:
 docker-compose -f docker-compose.yml -f docker-compose.local.yml up
 ```
 
-## Neue Pipeline anlegen
-- In dem Ordner /casc-Ordner die neue Pipeline in die Datei jobs.yml hinzufügen (am besten indem ein bestehender "- script >"-Skript kopiert wird)
+## Neuen Job anlegen
+
+- In dem Ordner `casc` die neue Pipeline in die Datei `jobs.yml` hinzufügen (in
+  simplen Fällen, indem ein bestehender Skript-Block kopiert wird)
 - Anschließend das Skript `./run.sh` auf dem archilab-build ausführen
 
 ## Zugriff auf laufenden Container
@@ -77,9 +79,14 @@ Scripted Pipeline
 ```javascript
 node {
    stage("..") {
-      withCredentials([usernamePassword(credentialsId: 'archilab-nexus-jenkins', usernameVariable: 'NEXUS_USERNAME', passwordVariable: 'NEXUS_PASSWORD')]) {
-         sh "mvn -B -s settings.xml -Ddockerfile.username=\"$NEXUS_USERNAME\" -Ddockerfile.password=\"$NEXUS_PASSWORD\" -Drevision=${revision} clean deploy"
-      }
+      withCredentials([usernamePassword(credentialsId: 'archilab-nexus-jenkins',
+                    usernameVariable: 'NEXUS_USERNAME', passwordVariable: 'NEXUS_PASSWORD')]) {
+                sh "mvn -B -s settings.xml \
+                    -Ddockerfile.username=\"$NEXUS_USERNAME\" \
+                    -Ddockerfile.password=\"$NEXUS_PASSWORD\" \
+                    -Dchangelist=${changelist} \
+                    clean deploy"
+            }
    }
 }
 ```
