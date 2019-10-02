@@ -12,3 +12,4 @@ unclassified:
       triggers:
         skipScmCause: false
         skipUpstreamCause: false
+        envVar: ""
