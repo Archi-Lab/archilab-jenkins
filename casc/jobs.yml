@@ -130,6 +130,27 @@ jobs:
             githubPush()
         }
       }
+  - script: >
+      pipelineJob('prox-search-service') {
+        definition {
+          cpsScm {
+              scriptPath 'src/main/jenkins/Jenkinsfile'
+              scm {
+                  git {
+                      remote {
+                          github('Archi-Lab/prox-search-service')
+                          credentials('archilab-github-jenkins')
+                      }
+                      branches('master')
+                  }
+              }
+              lightweight(true)
+          }
+        }
+        triggers {
+            githubPush()
+        }
+      }
 
   - script: >
       pipelineJob('prox-project-service-dev') {
@@ -240,6 +261,7 @@ jobs:
             githubPush()
         }
       }
+
   - script: >
       pipelineJob('prox-tag-service-dev') {
         definition {
@@ -249,6 +271,28 @@ jobs:
                   git {
                       remote {
                           github('Archi-Lab/prox-tag-service')
+                          credentials('archilab-github-jenkins')
+                      }
+                      branches('dev')
+                  }
+              }
+              lightweight(true)
+          }
+        }
+        triggers {
+            githubPush()
+        }
+      }
+
+  - script: >
+      pipelineJob('prox-search-service-dev') {
+        definition {
+          cpsScm {
+              scriptPath 'src/main/jenkins/Jenkinsfile'
+              scm {
+                  git {
+                      remote {
+                          github('Archi-Lab/prox-search-service')
                           credentials('archilab-github-jenkins')
                       }
                       branches('dev')
@@ -371,6 +415,7 @@ jobs:
             githubPush()
         }
       }
+
   - script: >
       pipelineJob('prox-tag-service-gp-ws2019') {
         definition {
@@ -380,6 +425,28 @@ jobs:
                   git {
                       remote {
                           github('Archi-Lab/prox-tag-service')
+                          credentials('archilab-github-jenkins')
+                      }
+                      branches('gp-ws2019')
+                  }
+              }
+              lightweight(true)
+          }
+        }
+        triggers {
+            githubPush()
+        }
+      }
+
+  - script: >
+      pipelineJob('prox-search-service-gp-ws2019') {
+        definition {
+          cpsScm {
+              scriptPath 'src/main/jenkins/Jenkinsfile'
+              scm {
+                  git {
+                      remote {
+                          github('Archi-Lab/prox-search-service')
                           credentials('archilab-github-jenkins')
                       }
                       branches('gp-ws2019')
