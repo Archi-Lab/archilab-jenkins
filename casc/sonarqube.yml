@@ -2,8 +2,10 @@ unclassified:
   sonarGlobalConfiguration:
     buildWrapperEnabled: false
     installations:
-    - credentialsId: "archilab-sonarqube-jenkins-token"
-      mojoVersion: "3.6.1.1688"
+    - additionalProperties: ""
+      additionalAnalysisProperties: ""
+      credentialsId: "archilab-sonarqube-jenkins-token"
+      mojoVersion: ""
       name: "SonarQube-Server"
       serverUrl: "https://sonar.archi-lab.io"
       serverAuthenticationToken: ""
