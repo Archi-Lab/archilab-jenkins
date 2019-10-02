@@ -64,7 +64,8 @@ tool:
       name: "Default"
   sonarRunnerInstallation:
     installations:
-    - name: "SonarQube Scanner"
+    - home: "sonar"
+      name: "SonarQube Scanner"
       properties:
       - installSource:
           installers:
