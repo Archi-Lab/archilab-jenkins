@@ -257,6 +257,9 @@ jobs:
               lightweight(true)
           }
         }
+        properties {
+            nextBuildNumber(47)
+        }
         triggers {
             githubPush()
         }

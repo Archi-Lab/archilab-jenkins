@@ -14,3 +14,4 @@ timestamper:latest
 workflow-aggregator:latest
 sonar:latest
 jacoco:latest
+next-build-number
