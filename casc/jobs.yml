@@ -6,6 +6,7 @@ jobs:
   - file: /var/jenkins_home/jobdsl/prox-api-gateway.groovy
   - file: /var/jenkins_home/jobdsl/prox-tag-service.groovy
   - file: /var/jenkins_home/jobdsl/prox-search-service.groovy
+  - file: /var/jenkins_home/jobdsl/prox-proposal-service.groovy
   - file: /var/jenkins_home/jobdsl/prox-project-service-dev.groovy
   - file: /var/jenkins_home/jobdsl/prox-module-service-dev.groovy
   - file: /var/jenkins_home/jobdsl/prox-web-client-dev.groovy
@@ -13,6 +14,7 @@ jobs:
   - file: /var/jenkins_home/jobdsl/prox-api-gateway-dev.groovy
   - file: /var/jenkins_home/jobdsl/prox-tag-service-dev.groovy
   - file: /var/jenkins_home/jobdsl/prox-search-service-dev.groovy
+  - file: /var/jenkins_home/jobdsl/prox-proposal-service-dev.groovy
   - file: /var/jenkins_home/jobdsl/prox-project-service-gp-ws2019.groovy
   - file: /var/jenkins_home/jobdsl/prox-module-service-gp-ws2019.groovy
   - file: /var/jenkins_home/jobdsl/prox-web-client-gp-ws2019.groovy
@@ -25,9 +27,13 @@ jobs:
   - file: /var/jenkins_home/jobdsl/prox-web-client-pp-ss2019.groovy
   - file: /var/jenkins_home/jobdsl/prox-service-discovery-pp-ss2019.groovy
   - file: /var/jenkins_home/jobdsl/prox-api-gateway-pp-ss2019.groovy
-  - file: /var/jenkins_home/jobdsl/prox-proposal-service.groovy
-  - file: /var/jenkins_home/jobdsl/prox-proposal-service-dev.groovy
   - file: /var/jenkins_home/jobdsl/prox-proposal-service-pp-ss2019.groovy
+  - file: /var/jenkins_home/jobdsl/prox-project-service-ip-ws2019.groovy
+  - file: /var/jenkins_home/jobdsl/prox-module-service-ip-ws2019.groovy
+  - file: /var/jenkins_home/jobdsl/prox-web-client-ip-ws2019.groovy
+  - file: /var/jenkins_home/jobdsl/prox-service-discovery-ip-ws2019.groovy
+  - file: /var/jenkins_home/jobdsl/prox-api-gateway-ip-ws2019.groovy
+  - file: /var/jenkins_home/jobdsl/prox-user-profile-service-ip-ws2019.groovy
   - file: /var/jenkins_home/jobdsl/coalbase-api-gateway.groovy
   - file: /var/jenkins_home/jobdsl/coalbase-comment.groovy
   - file: /var/jenkins_home/jobdsl/coalbase-frontend.groovy
@@ -44,9 +50,3 @@ jobs:
   - file: /var/jenkins_home/jobdsl/fae-team-3-service.groovy
   - file: /var/jenkins_home/jobdsl/fae-team-4-service.groovy
   - file: /var/jenkins_home/jobdsl/fae-documentation-server.groovy
-  - file: /var/jenkins_home/jobdsl/prox-project-service-ip-ws2019.groovy
-  - file: /var/jenkins_home/jobdsl/prox-module-service-ip-ws2019.groovy
-  - file: /var/jenkins_home/jobdsl/prox-web-client-ip-ws2019.groovy
-  - file: /var/jenkins_home/jobdsl/prox-service-discovery-ip-ws2019.groovy
-  - file: /var/jenkins_home/jobdsl/prox-api-gateway-ip-ws2019.groovy
-  - file: /var/jenkins_home/jobdsl/prox-user-profile-service-ip-ws2019.groovy
