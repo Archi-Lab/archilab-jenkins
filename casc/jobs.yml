@@ -240,7 +240,7 @@ jobs:
         }
       }
 
-  - file: ./jobs/prox-api-gateway-dev.groovy
+  - file: /var/jenkins_home/jobdsl/prox-api-gateway-dev.groovy
 
   - script: >
       pipelineJob('prox-tag-service-dev') {
