@@ -25,14 +25,14 @@ und muss deshalb von Hand angelegt werden mit allen Secrets angelegt werden.
 Danach können die Secrets mithilfe des Skripts angelegt werden:
 
 ```bash
-./create-secrets.sh
+./create-secrets
 ```
 
 Danach kann mit mithilfe des Run-Skripts das Docker-Image für den Jenkins-Server
 gebaut und gestartet werden:
 
 ```bash
-./run.sh
+./run
 ```
 
 ### Docker Desktop
@@ -57,9 +57,9 @@ docker-compose -f docker-compose.yml -f docker-compose.local.yml up
 
 ## Neuen Job anlegen
 
-- In dem Ordner `casc` die neue Pipeline in die Datei `jobs.yml` hinzufügen (in
-  simplen Fällen, indem ein bestehender Skript-Block kopiert wird)
-- Anschließend das Skript `./run.sh` auf dem archilab-build ausführen
+- In dem Ordner `jobs` eine neue Pipeline-Datei anlegen (bspw. durch Kopieren und Editieren einer vorhandenen Datei)
+- In dem Ordner `casc` in die Datei `jobs.yml` einen neuen Job mit Referenz auf die neue Pipeline-Datei hinzufügen
+- Anschließend das Skript `./run` auf dem archilab-build ausführen
 
 ## Zugriff auf laufenden Container
 
