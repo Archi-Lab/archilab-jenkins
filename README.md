@@ -1,82 +1,31 @@
-# ArchiLab Jenkins-Infrastruktur
+# ArchiLab Jenkins
 
-Dieses Repository beinhaltet alles was für die Installation, Einrichtung und den
-Betrieb des Jenkin-Servers benötigt wird.
+This repository contains scripts to setup [Jenkins](https://jenkins.io/).
 
-## Docker Secrets anlegen
+## Handling secrets
 
-Als erstes müssen alle Secrets angelegt werden. Welche Secrets benötigt werden
-um den Jenkins für ArchiLab voll konfiguriert zu starten, findet man in der
-`docker-compose.yml`.
+Since the configuration of Jenkins requires sensitive information like credentials and certificates JCasc allows for the usage of [Hashicorp Vault](https://www.vaultproject.io/) to retrieve those. The only sensitive information that is required for JCasc to pull the other secrets out of Vault have to be defined in a file `secrets/jcasc_vault`:
 
-Ohne in den Docker Swarm-Modus zu wechseln, müssen die Secrets ein wenig anders
-angelegt werden. Deswegen unterscheiden sich die Anleitungen für die zwei
-Umgebungen ein wenig:
-
-- Anleitung für [Docker Swarm Umgebung](#docker-swarm)
-- Anleitung für [Docker Desktop Umgebung](#docker-desktop)
-
-### Docker Swarm
-
-Um die benötigten Docker Secrets anzulegen existiert ein Skript, dass die
-Secrets aus Textdateien im Ordner `secrets` generiert. Dieser Ordner darf aus
-Sicherheitsgründen natürlich nicht in das öffentliche Repository gepusht werden
-und muss deshalb von Hand angelegt werden mit allen Secrets angelegt werden.
-Danach können die Secrets mithilfe des Skripts angelegt werden:
-
-```bash
-./create-secrets
+```text
+CASC_VAULT_APPROLE=<ROLE_ID>
+CASC_VAULT_APPROLE_SECRET=<SECRET_ID>
+CASC_VAULT_PATHS=secret/archilab/jenkins
+CASC_VAULT_URL=https://vault.archi-lab.io
 ```
 
-Danach kann mit mithilfe des Run-Skripts das Docker-Image für den Jenkins-Server
-gebaut und gestartet werden:
+All secrets defined at the specified Vault path are then accessible by JCasc and can be referenced like regular environment variables.
 
-```bash
-./run
-```
+## Create jobs
 
-### Docker Desktop
+- Create a pipeline file in the `jobs` folder
+- Add a job with a reference to the new pipeline file in the file `casc/jobs.yml`
+- Execute the `run.sh` script on the archilab-build server
 
-Da Docker Desktop - ohne in den Swarm Modus zu schalten - kein Docker secret
-unterstützt, gibt es die `docker-compose.local.yml`. In dieser Datei werden die
-Quellen der Secrets überschrieben und auf Dateinamen gelegt.
+## Advice for pipeline files
 
-Das heißt ganz konkret, dass alle Benutzernamen/Passwörter/RSA-Schlüssel etc.
-als Inhalt von einzelnen Dateien in dem Verzeichnis `secrets` abgelegt werden
-müssen. Dabei wurden die Secret-Namen direkt auch als Dateinamen benutzt.
+In order to push the built Docker images via the Maven plugin it requires credentials. Those are accessible as environment variables via `withCredentials()` inside a pipeline script.
 
-Welche Dateinamen es genau sind, findet man in der `docker-compose.local.yml`.
-
-Wenn die Dateien mit den jeweiligen Inhalten (Benutzernamen/Passwörter und
-privaten Schlüssel) angelegt sind, dann kann man Jenkins über den nachfolgenden
-Befehl einfach starten:
-
-```bash
-docker-compose -f docker-compose.yml -f docker-compose.local.yml up
-```
-
-## Neuen Job anlegen
-
-- In dem Ordner `jobs` eine neue Pipeline-Datei anlegen (bspw. durch Kopieren und Editieren einer vorhandenen Datei)
-- In dem Ordner `casc` in die Datei `jobs.yml` einen neuen Job mit Referenz auf die neue Pipeline-Datei hinzufügen
-- Anschließend das Skript `./run` auf dem archilab-build ausführen
-
-## Zugriff auf laufenden Container
-
-```bash
-docker exec -it jenkins bash
-```
-
-## Hinweise für die Projekte
-
-Damit man mit Maven über das Docker-Plugin das Docker-Image zu unserem
-Docker-Repository pushen kann, benötigt man Credentials. Diese kann man über
-`withCredentials()` als Umgebungsvariablen bekommen und diese dann ganz einfach
-im Skript benutzen.
-
-Scripted Pipeline
-
-```javascript
+```groovy
 node {
    stage("..") {
       withCredentials([usernamePassword(credentialsId: 'archilab-nexus-jenkins',
@@ -91,11 +40,10 @@ node {
 }
 ```
 
-**Hinweis:** Wenn es Fehler beim Herunterladen/Installieren der Jenkins-Plugins
-gibt, dann ggf. in der plugins.txt die Zeilenumbrüche überprüfen. [1]
+**Note:** On errors while installing Jenkins plugins check the line endings of `plugins.txt`. [1]
 
 ---
 
-### Quellen
+### References
 
 [1] https://github.com/jenkinsci/docker/issues/516
