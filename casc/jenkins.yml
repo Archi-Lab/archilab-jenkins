@@ -1,7 +1,7 @@
 jenkins:
   agentProtocols:
-  - "JNLP4-connect"
-  - "Ping"
+    - "JNLP4-connect"
+    - "Ping"
   authorizationStrategy:
     loggedInUsersCanDoAnything:
       allowAnonymousRead: true
@@ -22,15 +22,16 @@ jenkins:
     enabled: true
   scmCheckoutRetryCount: 0
   slaveAgentPort: 50000
-  systemMessage: "Jenkins configured automatically by Jenkins Configuration as Code\
+  systemMessage:
+    "Jenkins configured automatically by Jenkins Configuration as Code\
     \ plugin\r\n\r\n"
   updateCenter:
     sites:
-    - id: "default"
-      url: "https://updates.jenkins.io/update-center.json"
+      - id: "default"
+        url: "https://updates.jenkins.io/update-center.json"
   views:
-  - all:
-      name: "all"
+    - all:
+        name: "all"
   viewsTabBar: "standard"
 security:
   apiToken:
@@ -60,14 +61,14 @@ unclassified:
 tool:
   git:
     installations:
-    - home: "git"
-      name: "Default"
+      - home: "git"
+        name: "Default"
   sonarRunnerInstallation:
     installations:
-    - home: "sonar"
-      name: "SonarQube Scanner"
-      properties:
-      - installSource:
-          installers:
-          - sonarRunnerInstaller:
-              id: "4.0.0.1744"
+      - home: "sonar"
+        name: "SonarQube Scanner"
+        properties:
+          - installSource:
+              installers:
+                - sonarRunnerInstaller:
+                    id: "4.0.0.1744"
