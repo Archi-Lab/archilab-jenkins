@@ -2,15 +2,15 @@ unclassified:
   sonarGlobalConfiguration:
     buildWrapperEnabled: false
     installations:
-    - additionalProperties: ""
-      additionalAnalysisProperties: ""
-      credentialsId: "archilab-sonarqube-jenkins-token"
-      mojoVersion: ""
-      name: "SonarQube-Server"
-      serverUrl: "https://sonar.archi-lab.io"
-      serverAuthenticationToken: ""
-      triggers:
-        skipScmCause: false
-        skipUpstreamCause: false
-        envVar: ""
-      webhookSecretId: ""
+      - additionalProperties: ""
+        additionalAnalysisProperties: ""
+        credentialsId: "archilab-sonarqube-jenkins-token"
+        mojoVersion: ""
+        name: "SonarQube-Server"
+        serverUrl: "https://sonar.archi-lab.io"
+        serverAuthenticationToken: ""
+        triggers:
+          skipScmCause: false
+          skipUpstreamCause: false
+          envVar: ""
+        webhookSecretId: ""
