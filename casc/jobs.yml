@@ -9,6 +9,7 @@ jobs:
   - file: /var/jenkins_home/jobdsl/fae-message-broker.groovy
   - file: /var/jenkins_home/jobdsl/fae-service-discovery.groovy
   - file: /var/jenkins_home/jobdsl/fae-api-gateway.groovy
+  - file: /var/jenkins_home/jobdsl/fae-node-red.groovy
   - file: /var/jenkins_home/jobdsl/fae-shop-demo.groovy
   - file: /var/jenkins_home/jobdsl/fae-team-1-service.groovy
   - file: /var/jenkins_home/jobdsl/fae-team-2-service.groovy
