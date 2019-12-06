@@ -11,6 +11,7 @@ jobs:
   - file: /var/jenkins_home/jobdsl/fae-api-gateway.groovy
   - file: /var/jenkins_home/jobdsl/fae-node-red.groovy
   - file: /var/jenkins_home/jobdsl/fae-shop-demo.groovy
+  - file: /var/jenkins_home/jobdsl/fae-draussen-ortung.groovy
   - file: /var/jenkins_home/jobdsl/fae-team-1-service.groovy
   - file: /var/jenkins_home/jobdsl/fae-team-2-service.groovy
   - file: /var/jenkins_home/jobdsl/fae-team-3-service.groovy
