@@ -1,7 +1,7 @@
 pipelineJob('prox-web-client') {
     definition {
         cpsScm {
-            scriptPath 'src/jenkins/Jenkinsfile'
+            scriptPath 'Jenkinsfile'
             scm {
                 git {
                     remote {
