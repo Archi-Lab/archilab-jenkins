@@ -5,7 +5,7 @@ pipelineJob('prox-service-discovery-dev') {
             scm {
                 git {
                     remote {
-                        github('Archi-Lab/prox-service-discovery')
+                        github('innovation-hub-bergisches-rheinland/prox-service-discovery')
                         credentials('archilab-github-jenkins')
                     }
                     branches('dev')
