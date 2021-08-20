@@ -15,7 +15,7 @@ multibranchPipelineJob('prox-project-service') {
                                 strategyId(1)
                             }
                             headWildcardFilter {
-                                includes('dev master')
+                                includes('dev main')
                                 excludes('')
                             }
                         }
