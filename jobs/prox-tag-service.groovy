@@ -1,20 +1,32 @@
-pipelineJob('prox-tag-service') {
-    definition {
-        cpsScm {
-            scriptPath 'src/main/jenkins/Jenkinsfile'
-            scm {
-                git {
-                    remote {
-                        github('innovation-hub-bergisches-rheinland/prox-tag-service')
-                        credentials('archilab-github-jenkins')
+multibranchPipelineJob('prox-tag-service') {
+    branchSources {
+        branchSources {
+            branchSource {
+                source {
+                    github {
+                        apiUri('https://api.github.com')
+                        configuredByUrl(true)
+                        credentialsId('archilab-github-jenkins-token-username-password')
+                        repoOwner('innovation-hub-bergisches-rheinland')
+                        repository('prox-tag-service')
+                        repositoryUrl('https://github.com/innovation-hub-bergisches-rheinland/prox-tag-service')
+                        traits {
+                            gitHubBranchDiscovery {
+                                strategyId(1)
+                            }
+                            headWildcardFilter {
+                                includes('dev master')
+                                excludes('')
+                            }
+                        }
                     }
-                    branches('master')
                 }
             }
-            lightweight(true)
         }
     }
-    triggers {
-        githubPush()
+    factory {
+        workflowBranchProjectFactory {
+            scriptPath('src/main/jenkins/Jenkinsfile')
+        }
     }
 }
