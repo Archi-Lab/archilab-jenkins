@@ -7,4 +7,5 @@ jobs:
   - file: /var/jenkins_home/jobdsl/prox-professor-profile-service.groovy
   - file: /var/jenkins_home/jobdsl/prox-company-profile-service.groovy
   - file: /var/jenkins_home/jobdsl/prox-job-service.groovy
+  - file: /var/jenkins_home/jobdsl/prox-user-service.groovy
   - file: /var/jenkins_home/jobdsl/list-views.groovy
