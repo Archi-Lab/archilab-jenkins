@@ -29,4 +29,9 @@ multibranchPipelineJob('prox-professor-profile-service') {
             scriptPath('src/main/jenkins/Jenkinsfile')
         }
     }
+    triggers {
+        periodicFolderTrigger {
+            interval("1d")
+        }
+    }
 }

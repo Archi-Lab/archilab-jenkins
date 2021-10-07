@@ -29,4 +29,9 @@ multibranchPipelineJob('prox-web-client') {
             scriptPath('Jenkinsfile')
         }
     }
+    triggers {
+        periodicFolderTrigger {
+            interval("1d")
+        }
+    }
 }

@@ -29,4 +29,9 @@ multibranchPipelineJob('prox-tag-service') {
             scriptPath('src/main/jenkins/Jenkinsfile')
         }
     }
+    triggers {
+        periodicFolderTrigger {
+            interval("1d")
+        }
+    }
 }

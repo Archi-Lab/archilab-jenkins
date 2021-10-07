@@ -29,4 +29,9 @@ multibranchPipelineJob('prox-service-discovery') {
             scriptPath('src/main/jenkins/Jenkinsfile')
         }
     }
+    triggers {
+        periodicFolderTrigger {
+            interval("1d")
+        }
+    }
 }
