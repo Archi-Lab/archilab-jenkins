@@ -14,6 +14,7 @@ docker-commons:latest
 docker-workflow:latest
 durable-task:latest
 embeddable-build-status:latest
+generic-webhook-trigger:latest
 git:latest
 git-client:latest
 git-server:latest
