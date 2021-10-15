@@ -6,5 +6,7 @@ for (f in Jenkins.instance.getAllItems(jenkins.branch.MultiBranchProject.class))
   if (f.parent instanceof jenkins.branch.OrganizationFolder) {
     continue;
   }
-  f.computation.run();
+  if(f.isBuildable()) {
+    f.scheduleBuild();
+  }
 }
