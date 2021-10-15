@@ -1,7 +1,10 @@
-import hudson.model.*;
+import jenkins.branch.*
+import jenkins.model.Jenkins
 
-multiBranchProjects = Hudson.instance.getAllItems(org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject)
 
-for (mbProject in multiBranchProjects) {
-    mbProject.computation.run()
+for (f in Jenkins.instance.getAllItems(jenkins.branch.MultiBranchProject.class)) {
+  if (f.parent instanceof jenkins.branch.OrganizationFolder) {
+    continue;
+  }
+  f.computation.run()
 }
